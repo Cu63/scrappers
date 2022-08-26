@@ -33,8 +33,7 @@ class Crawler:
     def safeGet(self, pageObj, selector):
         selectedElems = pageObj.select(selector)
         if selectedElems is not None and len(selectedElems) > 0:
-            return '\n'.join(
-            [elem.get_text() for elem in selectedElems])
+            return '\n'.join([elem.get_text() for elem in selectedElems])
         return ''
 
     def parse(self, site, url):
@@ -57,11 +56,12 @@ siteData = [
          'div.StandardArticleBody_body_1gnLa'],
         ['Brookings', 'http://www.brooking.edu',
          'h1', 'div.post-body'],
-        ['New York Times', 'http://nytimes.com', 
+        ['New York Times', 'http://nytimes.com',
          'h1', 'div.StoryCompanionColumn div p']
 ]
 websites = []
 for row in siteData:
     websites.append(Website(row[0], row[1], row[2], row[3]))
 
-crawler.parse(websites[0], 'http://shop.oreilly.com/product/\'0636920028154.do')
+crawler.parse(websites[0],
+              'http://shop.oreilly.com/product/\'0636920028154.do')

@@ -31,7 +31,6 @@ class Crawler:
         self.site = site
         self.visited = []
 
-
     def getPage(self, url):
         try:
             req = requests.get(url)
@@ -39,14 +38,12 @@ class Crawler:
             return None
         return BeautifulSoup(req.text, 'html.parser')
 
-
     def safeGet(self, pageObj, selector):
         selectedElems = pageObj.select(selector)
         if selectedElems is not None and len(selectedElems) > 0:
             return '\n'.join(
                              [elem.get_text() for elem in selectedElems])
         return ''
-
 
     def parse(self, url):
         bs = self.getPage(url)
@@ -56,7 +53,6 @@ class Crawler:
             if title != '' and body != '':
                 content = Content(url, title, body)
                 content.print()
-
 
     def crawl(self):
         bs = self.getPage(self.site.url)

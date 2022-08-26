@@ -12,5 +12,3 @@ class Webpage:
         self.name = name
         self.url = url
         self.titleTag = titleTag
-
-

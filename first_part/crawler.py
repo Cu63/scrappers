@@ -58,9 +58,10 @@ class Crawler:
                 print('Something was wrong with that page on URL. Skipping!')
                 return
             title = self.safeGet(bs, site.titleTag)
-            body = self.safeGet(bs, bodyTag)
+            body = self.safeGet(bs, site.bodyTag)
             if title != '' and body != '':
                 content = Content(topic, title, body, url)
+                content.print()
 
 
 crawler = Crawler()
